@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -43,45 +44,18 @@
 
     <script>
         const categories = [
-            { name: "Site PTW Registers and User Manual", color: "bg-green-500", items: [
-                "Lobs Hole Register", "Tantangara Register", "Marica Register", "Polo Flat Register",
-                "Isolation Register", "Long Term Isolation Register", "Purple Lock Register"
-            ]},
-            { name: "PTW Lock Registers and Workforce Menu", color: "bg-blue-500", items: [
-                "General Workforce Permit Generation Menu", "Permit To Work Lock and Hardware Register",
-                "Commissioning/RSGx Competency Register"
-            ]},
-            { name: "Search INX Competencies", color: "bg-yellow-500", items: [
-                "Search INX", "Search E7", "Search RSGx"
-            ]},
-            { name: "Procedures, SWMS, JHA's and Roster", color: "bg-indigo-500", items: [
-                "Procedures", "SWMS", "JHA's", "Roster", "Safe Work Instruction"
-            ]},
-            { name: "Lobs Hole PTW Reports", color: "bg-red-500", items: [
-                "Expired Permits Report", "Simops Report", "Expired Permits Today Report", "ERT Hot Works Permits Report"
-            ]},
-            { name: "Tantangara PTW Reports and Views", color: "bg-purple-500", items: [
-                "Compact View", "Expired Permits Report", "Simops Report", "Expired Permits Today Report", "ERT Hot Works Permits Report"
-            ]},
-            { name: "Marica PTW Reports", color: "bg-pink-500", items: [
-                "Expired Permits Report", "Simops Report", "Expired Permits Today Report", "ERT Hot Works Permits Report"
-            ]},
-            { name: "Polo Flat PTW Reports", color: "bg-orange-500", items: [
-                "Expired Permits Report", "Simops Report", "Expired Permits Today Report", "ERT Hot Works Permits Report"
-            ]},
-            { name: "PCO Digital Permit Forms", color: "bg-teal-500", items: [
-                "Digital Permit Lobs Hole", "Digital Permit Tantangara", "Digital Permit Marica", "Digital Permits Polo Flat", "Purple Lock Tags"
-            ]},
-            { name: "Ready for Issue and Emailed PTW Forms", color: "bg-cyan-500", items: [
-                "Emailed Digital Permits", "Ready For Issue Permits"
-            ]},
-            { name: "Blank Permit Forms", color: "bg-lime-500", items: [
-                "General Permit", "CSE Permit", "Isolation Schedule", "Link to Blank Permit Form Location for Email Attachment"
-            ]},
-            { name: "PTW Work Packs", color: "bg-emerald-500", items: [
-                "Working at Height", "Hydro/Pressure Test", "Hot Works", "Lift Work", "Excavation", "Scaffold",
-                "CSE", "Latest SWMS", "Live Dig Check Sheet", "Work Pack Folder"
-            ]}
+            { name: "Site PTW Registers and User Manual", color: "bg-red-500", textColor: "text-white" },
+            { name: "PTW Lock Registers and Workforce Menu", color: "bg-blue-500", textColor: "text-white" },
+            { name: "Search INX Competencies", color: "bg-yellow-500", textColor: "text-black" },
+            { name: "Procedures, SWMS, JHA's and Roster", color: "bg-green-500", textColor: "text-white" },
+            { name: "Lobs Hole PTW Reports", color: "bg-purple-500", textColor: "text-white" },
+            { name: "Tantangara PTW Reports and Views", color: "bg-pink-500", textColor: "text-white" },
+            { name: "Marica PTW Reports", color: "bg-indigo-500", textColor: "text-white" },
+            { name: "Polo Flat PTW Reports", color: "bg-orange-500", textColor: "text-white" },
+            { name: "PCO Digital Permit Forms", color: "bg-teal-500", textColor: "text-white" },
+            { name: "Ready for Issue and Emailed PTW Forms", color: "bg-cyan-500", textColor: "text-black" },
+            { name: "Blank Permit Forms", color: "bg-lime-500", textColor: "text-black" },
+            { name: "PTW Work Packs", color: "bg-emerald-500", textColor: "text-white" }
         ];
 
         const leftPanel = document.getElementById('leftPanel');
@@ -98,11 +72,9 @@
 
         function showContent(category) {
             if (activeCategory === category) {
-                // If the same category is clicked again, hide the content
                 contentArea.innerHTML = '';
                 activeCategory = null;
             } else {
-                // Show the content for the clicked category
                 contentArea.innerHTML = '';
                 const title = document.createElement('h2');
                 title.textContent = category.name;
@@ -110,7 +82,7 @@
                 contentArea.appendChild(title);
 
                 category.items.forEach(item => {
-                    const button = createButton(item, () => console.log(`Clicked: ${item}`), `w-full text-left p-2 mb-2 ${category.color} text-white hover:opacity-80 rounded shadow`);
+                    const button = createButton(item, () => console.log(`Clicked: ${item}`), `w-full text-left p-2 mb-2 ${category.color} ${category.textColor} hover:opacity-80 rounded shadow`);
                     contentArea.appendChild(button);
                 });
                 activeCategory = category;
@@ -121,7 +93,7 @@
             const button = createButton(
                 category.name,
                 () => showContent(category),
-                'w-full text-left p-2 mb-2 bg-gray-300 hover:bg-gray-400 rounded shadow'
+                `w-full text-left p-2 mb-2 ${category.color} ${category.textColor} hover:opacity-80 rounded shadow`
             );
             leftPanel.appendChild(button);
         });
