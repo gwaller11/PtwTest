@@ -10,15 +10,25 @@
         .menu-item:hover {
             background-color: #4a5568;
         }
-        /* Ensure consistent font for all elements */
         body, button {
             font-family: Arial, sans-serif;
         }
-        /* Force consistent font size, weight, and style for all buttons in the left panel */
         #leftPanel button {
             font-size: 14px !important;
             font-weight: normal !important;
             text-transform: none !important;
+        }
+        .form-field {
+            @apply flex items-center mb-2;
+        }
+        .form-field label {
+            @apply w-32 font-semibold text-sm;
+        }
+        .form-field input, .form-field select {
+            @apply border border-gray-300 rounded px-2 py-1 w-48;
+        }
+        .search-button {
+            @apply bg-blue-500 text-white px-4 py-1 rounded hover:bg-blue-600 ml-2;
         }
     </style>
 </head>
@@ -42,7 +52,7 @@
         </aside>
 
         <main class="flex-1 p-4 bg-white overflow-y-auto">
-            <div id="contentArea" class="grid grid-cols-3 gap-4"></div>
+            <div id="contentArea"></div>
         </main>
     </div>
 
@@ -111,11 +121,11 @@
                 { name: "Digital Permits Polo Flat", color: "bg-indigo-400" },
                 { name: "Purple Lock Tags", color: "bg-green-400" }
             ]},
-            { name: "Ready for Issue and Emailed PTW Forms", color: "bg-cyan-500", textColor: "text-white", items: [
+            { name: "Ready for Issue and Emailed PTW Forms", color: "bg-cyan-500", textColor: "text-black", items: [
                 { name: "Emailed Digital Permits", color: "bg-rose-400" },
                 { name: "Ready For Issue Permits", color: "bg-yellow-400" }
             ]},
-            { name: "Blank Permit Forms", color: "bg-lime-500", textColor: "text-white", items: [
+            { name: "Blank Permit Forms", color: "bg-lime-500", textColor: "text-black", items: [
                 { name: "General Permit", color: "bg-blue-400" },
                 { name: "CSE Permit", color: "bg-purple-400" },
                 { name: "Isolation Schedule", color: "bg-orange-400" },
@@ -155,15 +165,82 @@
                 contentArea.innerHTML = '';
                 const title = document.createElement('h2');
                 title.textContent = category.name;
-                title.className = 'col-span-3 font-bold text-xl mb-4';
+                title.className = 'font-bold text-xl mb-4';
                 contentArea.appendChild(title);
 
                 category.items.forEach(item => {
-                    const button = createButton(item.name, () => console.log(`Clicked: ${item.name}`), `w-full text-left p-2 mb-2 ${item.color} text-white hover:opacity-80 rounded shadow`);
+                    const button = createButton(item.name, () => handleItemClick(item), `w-full text-left p-2 mb-2 ${item.color} text-white hover:opacity-80 rounded shadow`);
                     contentArea.appendChild(button);
                 });
                 activeCategory = category;
             }
+        }
+
+        function handleItemClick(item) {
+            if (item.name === "Lobs Hole Register") {
+                showLobsHoleRegister();
+            } else {
+                console.log(`Clicked: ${item.name}`);
+            }
+        }
+
+        function showLobsHoleRegister() {
+            contentArea.innerHTML = `
+                <h2 class="font-bold text-xl mb-4">Lobs Hole Register</h2>
+                <div class="space-y-4">
+                    <div class="form-field">
+                        <label for="permitNumber">Permit Number:</label>
+                        <input type="text" id="permitNumber" name="permitNumber">
+                        <button class="search-button">Search</button>
+                    </div>
+                    <div class="form-field">
+                        <label for="permitType">Permit Type:</label>
+                        <select id="permitType" name="permitType">
+                            <option value="">Select type</option>
+                            <option value="general">General</option>
+                            <option value="hotWork">Hot Work</option>
+                            <option value="confinedSpace">Confined Space</option>
+                            <option value="workingAtHeight">Working at Height</option>
+                        </select>
+                        <button class="search-button">Search</button>
+                    </div>
+                    <div class="form-field">
+                        <label for="status">Status:</label>
+                        <select id="status" name="status">
+                            <option value="">Select status</option>
+                            <option value="active">Active</option>
+                            <option value="closed">Closed</option>
+                            <option value="suspended">Suspended</option>
+                        </select>
+                        <button class="search-button">Search</button>
+                    </div>
+                    <div class="form-field">
+                        <label for="issueDate">Issue Date:</label>
+                        <input type="date" id="issueDate" name="issueDate">
+                        <button class="search-button">Search</button>
+                    </div>
+                    <div class="form-field">
+                        <label for="expiryDate">Expiry Date:</label>
+                        <input type="date" id="expiryDate" name="expiryDate">
+                        <button class="search-button">Search</button>
+                    </div>
+                    <div class="form-field">
+                        <label for="issuedBy">Issued By:</label>
+                        <input type="text" id="issuedBy" name="issuedBy">
+                        <button class="search-button">Search</button>
+                    </div>
+                    <div class="form-field">
+                        <label for="description">Description:</label>
+                        <input type="text" id="description" name="description">
+                        <button class="search-button">Search</button>
+                    </div>
+                    <div class="form-field">
+                        <label for="location">Location:</label>
+                        <input type="text" id="location" name="location">
+                        <button class="search-button">Search</button>
+                    </div>
+                </div>
+            `;
         }
 
         categories.forEach(category => {
