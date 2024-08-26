@@ -28,16 +28,16 @@
             @apply border border-gray-300 rounded px-2 py-1 w-48;
         }
         .search-button {
-            @apply bg-blue-500 text-white px-4 py-1 rounded hover:bg-blue-600 ml-2;
+            @apply bg-gray-600 text-white px-4 py-1 rounded hover:bg-gray-700 ml-2;
         }
     </style>
 </head>
 <body class="flex flex-col h-screen bg-gray-100">
-    <header class="bg-blue-600 text-white p-2">
+    <header class="bg-gray-800 text-white p-2">
         <h1 class="text-xl font-bold">FGJV Permit to Work v1.0</h1>
     </header>
 
-    <nav class="bg-blue-500 text-white p-1 flex">
+    <nav class="bg-gray-700 text-white p-1 flex">
         <div class="menu-item px-4 py-1 cursor-pointer">File</div>
         <div class="menu-item px-4 py-1 cursor-pointer">Edit</div>
         <div class="menu-item px-4 py-1 cursor-pointer">View</div>
@@ -63,85 +63,85 @@
 
     <script>
         const categories = [
-            { name: "Site PTW Registers and User Manual", color: "bg-red-500", textColor: "text-white", items: [
-                { name: "Lobs Hole Register", color: "bg-yellow-400" },
-                { name: "Tantangara Register", color: "bg-green-400" },
-                { name: "Marica Register", color: "bg-blue-400" },
-                { name: "Polo Flat Register", color: "bg-purple-400" },
-                { name: "Isolation Register", color: "bg-pink-400" },
-                { name: "Long Term Isolation Register", color: "bg-indigo-400" },
-                { name: "Purple Lock Register", color: "bg-teal-400" }
+            { name: "Site PTW Registers and User Manual", items: [
+                { name: "Lobs Hole Register" },
+                { name: "Tantangara Register" },
+                { name: "Marica Register" },
+                { name: "Polo Flat Register" },
+                { name: "Isolation Register" },
+                { name: "Long Term Isolation Register" },
+                { name: "Purple Lock Register" }
             ]},
-            { name: "PTW Lock Registers and Workforce Menu", color: "bg-blue-500", textColor: "text-white", items: [
-                { name: "General Workforce Permit Generation Menu", color: "bg-orange-400" },
-                { name: "Permit To Work Lock and Hardware Register", color: "bg-emerald-400" },
-                { name: "Commissioning/RSGx Competency Register", color: "bg-rose-400" }
+            { name: "PTW Lock Registers and Workforce Menu", items: [
+                { name: "General Workforce Permit Generation Menu" },
+                { name: "Permit To Work Lock and Hardware Register" },
+                { name: "Commissioning/RSGx Competency Register" }
             ]},
-            { name: "Search INX Competencies", color: "bg-yellow-500", textColor: "text-black", items: [
-                { name: "Search INX", color: "bg-cyan-400" },
-                { name: "Search E7", color: "bg-fuchsia-400" },
-                { name: "Search RSGx", color: "bg-lime-400" }
+            { name: "Search INX Competencies", items: [
+                { name: "Search INX" },
+                { name: "Search E7" },
+                { name: "Search RSGx" }
             ]},
-            { name: "Procedures, SWMS, JHA's and Roster", color: "bg-green-500", textColor: "text-white", items: [
-                { name: "Procedures", color: "bg-amber-400" },
-                { name: "SWMS", color: "bg-sky-400" },
-                { name: "JHA's", color: "bg-violet-400" },
-                { name: "Roster", color: "bg-red-400" },
-                { name: "Safe Work Instruction", color: "bg-emerald-400" }
+            { name: "Procedures, SWMS, JHA's and Roster", items: [
+                { name: "Procedures" },
+                { name: "SWMS" },
+                { name: "JHA's" },
+                { name: "Roster" },
+                { name: "Safe Work Instruction" }
             ]},
-            { name: "Lobs Hole PTW Reports", color: "bg-purple-500", textColor: "text-white", items: [
-                { name: "Expired Permits Report", color: "bg-yellow-400" },
-                { name: "Simops Report", color: "bg-blue-400" },
-                { name: "Expired Permits Today Report", color: "bg-green-400" },
-                { name: "ERT Hot Works Permits Report", color: "bg-pink-400" }
+            { name: "Lobs Hole PTW Reports", items: [
+                { name: "Expired Permits Report" },
+                { name: "Simops Report" },
+                { name: "Expired Permits Today Report" },
+                { name: "ERT Hot Works Permits Report" }
             ]},
-            { name: "Tantangara PTW Reports and Views", color: "bg-pink-500", textColor: "text-white", items: [
-                { name: "Compact View", color: "bg-teal-400" },
-                { name: "Expired Permits Report", color: "bg-orange-400" },
-                { name: "Simops Report", color: "bg-indigo-400" },
-                { name: "Expired Permits Today Report", color: "bg-amber-400" },
-                { name: "ERT Hot Works Permits Report", color: "bg-cyan-400" }
+            { name: "Tantangara PTW Reports and Views", items: [
+                { name: "Compact View" },
+                { name: "Expired Permits Report" },
+                { name: "Simops Report" },
+                { name: "Expired Permits Today Report" },
+                { name: "ERT Hot Works Permits Report" }
             ]},
-            { name: "Marica PTW Reports", color: "bg-indigo-500", textColor: "text-white", items: [
-                { name: "Expired Permits Report", color: "bg-lime-400" },
-                { name: "Simops Report", color: "bg-rose-400" },
-                { name: "Expired Permits Today Report", color: "bg-sky-400" },
-                { name: "ERT Hot Works Permits Report", color: "bg-fuchsia-400" }
+            { name: "Marica PTW Reports", items: [
+                { name: "Expired Permits Report" },
+                { name: "Simops Report" },
+                { name: "Expired Permits Today Report" },
+                { name: "ERT Hot Works Permits Report" }
             ]},
-            { name: "Polo Flat PTW Reports", color: "bg-orange-500", textColor: "text-white", items: [
-                { name: "Expired Permits Report", color: "bg-violet-400" },
-                { name: "Simops Report", color: "bg-emerald-400" },
-                { name: "Expired Permits Today Report", color: "bg-blue-400" },
-                { name: "ERT Hot Works Permits Report", color: "bg-yellow-400" }
+            { name: "Polo Flat PTW Reports", items: [
+                { name: "Expired Permits Report" },
+                { name: "Simops Report" },
+                { name: "Expired Permits Today Report" },
+                { name: "ERT Hot Works Permits Report" }
             ]},
-            { name: "PCO Digital Permit Forms", color: "bg-teal-500", textColor: "text-white", items: [
-                { name: "Digital Permit Lobs Hole", color: "bg-pink-400" },
-                { name: "Digital Permit Tantangara", color: "bg-purple-400" },
-                { name: "Digital Permit Marica", color: "bg-amber-400" },
-                { name: "Digital Permits Polo Flat", color: "bg-indigo-400" },
-                { name: "Purple Lock Tags", color: "bg-green-400" }
+            { name: "PCO Digital Permit Forms", items: [
+                { name: "Digital Permit Lobs Hole" },
+                { name: "Digital Permit Tantangara" },
+                { name: "Digital Permit Marica" },
+                { name: "Digital Permits Polo Flat" },
+                { name: "Purple Lock Tags" }
             ]},
-            { name: "Ready for Issue and Emailed PTW Forms", color: "bg-cyan-500", textColor: "text-black", items: [
-                { name: "Emailed Digital Permits", color: "bg-rose-400" },
-                { name: "Ready For Issue Permits", color: "bg-yellow-400" }
+            { name: "Ready for Issue and Emailed PTW Forms", items: [
+                { name: "Emailed Digital Permits" },
+                { name: "Ready For Issue Permits" }
             ]},
-            { name: "Blank Permit Forms", color: "bg-lime-500", textColor: "text-black", items: [
-                { name: "General Permit", color: "bg-blue-400" },
-                { name: "CSE Permit", color: "bg-purple-400" },
-                { name: "Isolation Schedule", color: "bg-orange-400" },
-                { name: "Link to Blank Permit Form Location for Email Attachment", color: "bg-teal-400" }
+            { name: "Blank Permit Forms", items: [
+                { name: "General Permit" },
+                { name: "CSE Permit" },
+                { name: "Isolation Schedule" },
+                { name: "Link to Blank Permit Form Location for Email Attachment" }
             ]},
-            { name: "PTW Work Packs", color: "bg-emerald-500", textColor: "text-white", items: [
-                { name: "Working at Height", color: "bg-yellow-400" },
-                { name: "Hydro/Pressure Test", color: "bg-pink-400" },
-                { name: "Hot Works", color: "bg-blue-400" },
-                { name: "Lift Work", color: "bg-purple-400" },
-                { name: "Excavation", color: "bg-orange-400" },
-                { name: "Scaffold", color: "bg-indigo-400" },
-                { name: "CSE", color: "bg-rose-400" },
-                { name: "Latest SWMS", color: "bg-cyan-400" },
-                { name: "Live Dig Check Sheet", color: "bg-lime-400" },
-                { name: "Work Pack Folder", color: "bg-amber-400" }
+            { name: "PTW Work Packs", items: [
+                { name: "Working at Height" },
+                { name: "Hydro/Pressure Test" },
+                { name: "Hot Works" },
+                { name: "Lift Work" },
+                { name: "Excavation" },
+                { name: "Scaffold" },
+                { name: "CSE" },
+                { name: "Latest SWMS" },
+                { name: "Live Dig Check Sheet" },
+                { name: "Work Pack Folder" }
             ]}
         ];
 
@@ -168,10 +168,13 @@
                 title.className = 'font-bold text-xl mb-4';
                 contentArea.appendChild(title);
 
+                const buttonContainer = document.createElement('div');
+                buttonContainer.className = 'flex flex-wrap gap-2';
                 category.items.forEach(item => {
-                    const button = createButton(item.name, () => handleItemClick(item), `w-full text-left p-2 mb-2 ${item.color} text-white hover:opacity-80 rounded shadow`);
-                    contentArea.appendChild(button);
+                    const button = createButton(item.name, () => handleItemClick(item), `inline-block text-left p-2 bg-gray-200 text-gray-800 hover:bg-gray-300 rounded shadow`);
+                    buttonContainer.appendChild(button);
                 });
+                contentArea.appendChild(buttonContainer);
                 activeCategory = category;
             }
         }
@@ -247,7 +250,7 @@
             const button = createButton(
                 category.name,
                 () => showContent(category),
-                `w-full text-left p-2 mb-2 ${category.color} ${category.textColor} hover:opacity-80 rounded shadow`
+                `w-full text-left p-2 mb-2 bg-gray-300 text-gray-800 hover:bg-gray-400 rounded shadow`
             );
             leftPanel.appendChild(button);
         });
